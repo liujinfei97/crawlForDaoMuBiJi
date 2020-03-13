@@ -102,14 +102,14 @@ SCHEDULER_PERSIST = True
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 # 定义MONGODB变量
-MONGODB_HOST = "127.0.0.1"
-MONGODB_PORT = 27017
+#MONGODB_HOST = "127.0.0.1"
+#MONGODB_PORT = 27017
 
 # 定义MYSQL变量
-MYSQL_HOST = "localhost"
-MYSQL_USER = "root"
-MYSQL_PWD = "123456"
-MYSQL_DB = "daomudb"
+#MYSQL_HOST = "localhost"
+#MYSQL_USER = "root"
+#MYSQL_PWD = "123456"
+#MYSQL_DB = "daomudb"
 
 
 

@@ -19,6 +19,8 @@ class DaomuPipeline(object):
         print(item["zhLink"])
         print("==================")
 
+
+#此方法只能用于非分布式，因为scrapy_redis只支持redis数据库的存储
 class DaomumongoPipeline(object):
     def __init__(self):
         # 从settings.py中获取变量的值
@@ -37,6 +39,7 @@ class DaomumongoPipeline(object):
         print("存入数据库成功")
         # return item
 
+#此方法只能用于非分布式，因为scrapy_redis只支持redis数据库的存储
 class DaomumysqlPipeline(object):
     def __init__(self):
         host = settings.MYSQL_HOST
@@ -55,3 +58,18 @@ class DaomumysqlPipeline(object):
              item['zhName'],item['zhNum'],item['zhLink'],item['zhTxt']]
         self.cursor.execute(ins,L)
         self.db.commit()
+
+## redis.windows.conf配置：
+#bind 127.0.0.1，表示可以让其他ip访问redis
+
+#将yes该为no：protected-mode no，表示可以让其他ip操作redis
+
+class DaomuRedisPipeline(obj):
+    def open_spider(self, spider):
+        # 连接数据库
+        self.conn = redis.Redis(host='192.168.1.10', port=6379)
+
+    def process_item(self, item, spider):
+        data_dict = item
+        self.conn.lpush('data', data_dict)
+        return item
