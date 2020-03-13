@@ -1,6 +1,7 @@
 # crawlForDaoMuBiJi
 this is a crawl for novel-DaoMuBiJi
 使用scrapy,redis, mongodb实现的一个分布式网络爬虫,底层存储mongodb集群,分布式使用redis实现。
+实际是先利用框架将数据存储到redis数据库，再将数据取出（即运行main）存入到mongodb中
 这个爬虫文件针对的是“www.dmbj.com”盗墓笔记网的小说文件的爬取。
 需要的环境是：
 安装scrapy
@@ -13,10 +14,16 @@ this is a crawl for novel-DaoMuBiJi
 搭建mongodb集群
 ps:此文件还同样的增加了针对Mysql数据库存储的方法，需要使用是可以下载pymysql与mysql.然后在settings文件中配置相应的端口号，ip等即可
 
+注意：scrapy-redis爬虫组件是基于redis数据库做数据持久化，不能是别的数据库
+修改redis启动配置文件：redis.windows.conf 
+将 bind 127.0.0.1 进行注释
+将 protected-mode no 关闭保护模式
+
 运行方式：
 运行爬虫文件：scrapy runspider SpiderFile
 # 调度器队列中等待请求对象
 向调度器队列中扔入一个起始url（在redis客户端中操作）：lpush redis_key属性值  起始url（“http://www.dmbj.cc/daomubiji1/”）
+
 
 
 #在实际使用时，需要配置UA池和地址池，如下（具体的User-Agent及代理ip可以自行查询更改）
