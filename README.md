@@ -2,7 +2,7 @@
 this is a crawl for novel-DaoMuBiJi
 使用scrapy,redis, mongodb实现的一个分布式网络爬虫,底层存储mongodb集群,分布式使用redis实现。
 实际是先利用框架将数据存储到redis数据库，再将数据取出（即运行main）存入到mongodb中
-这个爬虫文件针对的是“www.dmbj.com”盗墓笔记网的小说文件的爬取。
+这个爬虫文件针对的是盗墓笔记网的小说文件的爬取。
 需要的环境是：
 安装scrapy
 安装redispy
