@@ -16,7 +16,7 @@ ps:此文件还同样的增加了针对Mysql数据库存储的方法，需要使
 运行方式：
 运行爬虫文件：scrapy runspider SpiderFile
 # 调度器队列中等待请求对象
-向调度器队列中扔入一个起始url（在redis客户端中操作）：lpush redis_key属性值  起始url（http://www.dmbj.cc/daomubiji1/）
+向调度器队列中扔入一个起始url（在redis客户端中操作）：lpush redis_key属性值  起始url（“http://www.dmbj.cc/daomubiji1/”）
 
 
 #在实际使用时，需要配置UA池和地址池，如下（具体的User-Agent及代理ip可以自行查询更改）
